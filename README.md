@@ -1,4 +1,6 @@
-# MonRead
+MonRead
+=======
+
 In some case Mongoengine is too slow, you can pass your mongo queryset to monread and use like some pymongo project
 very fast resut can be satisfied you
 
@@ -44,3 +46,11 @@ for item in product_list:
 	print item.pk
 
 ```
+
+# support
+- RefrenceField
+- List RefrenceField
+
+# Doing
+- EmbeddedField
+- list EmbeddedField
