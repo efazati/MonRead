@@ -1,6 +1,5 @@
 from pymongo import MongoClient
 import copy
-from time import time
 
 class Monread:
     """
@@ -19,7 +18,6 @@ class Monread:
     def __init__(self, mongoengine_queryset='', limit=6, order=(), start=0):
         self.clean()
         self.order = order
-        #@TODO create instance for get instance
         self.base_moon_hole = copy.deepcopy(self) 
         if mongoengine_queryset:
             query = mongoengine_queryset._query
@@ -158,7 +156,6 @@ class Monread:
         paged = paged.split('_')
         start = int(paged[0])
         end = int(paged[1])
-        a = time()
         if self.order:
             items = self.get_connection.find(self.query).sort(self.order)[start:end]
         else:
@@ -172,8 +169,6 @@ class Monread:
 
     def get_documents_with_query(self, query, paged):
         items = self.get_raw_documents_with_query(query, paged)
-        # for item in items:
-        #     list.append(self.load_data(self, item))
         self.load_data(self, items, query, paged)
         return self
 
